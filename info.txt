@@ -1,0 +1,32 @@
+Core Reasons to Use Grayscale
+Reduces Memory & File Size: Dropping from three channels to one cuts the image data 
+size by roughly 66%, resulting in lower storage requirements and faster network transfers.
+
+Speeds Up Computation: With two-thirds less data to process, mathematical operations like 
+convolutions, resizing, and matrix transformations run up to three times faster. 
+his is critical for real-time video processing and embedded hardware.
+
+Required for Key Algorithms: Many foundational computer vision algorithms—such 
+as Canny Edge Detection, Sobel Filters, and Optical Character Recognition 
+(OCR)—operate strictly on pixel intensity gradients and require grayscale inputs to work.
+
+
+Eliminates Visual Noise: For tasks like facial recognition, object shape detection, or 
+structural medical imaging (X-rays/MRIs), color is often a distraction. Grayscale 
+forces the model to focus purely on geometry, contrast, and texture
+
+
+In OpenCV, cv2.adaptiveThreshold is used to convert a grayscale image into a 
+binary (black and white) image by calculating different threshold values for 
+different regions.
+
+Handles Uneven Lighting : 
+Global thresholding fails in images with shadows, highlights, or varying 
+backgrounds because it uses a single cutoff value for the entire image.
+Adaptive thresholding calculates the threshold for each pixel based on its local
+neighborhood, making it ideal for stained histology slides, documents, and 
+scanned images where lighting is not uniform.
+
+Improves Document Scanning : When scanning documents, lighting conditions vary 
+across the page, creating shadows and highlights. Adaptive thresholding ensures 
+that both dark and light text is captured equally well.
